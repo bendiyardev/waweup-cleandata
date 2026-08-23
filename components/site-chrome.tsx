@@ -237,51 +237,76 @@ export function TopControls() {
   }, []);
 
   return (
-    <div className="flex items-center justify-end gap-2">
-      <a
-        href="https://waweup.com"
-        aria-label={t.backAria}
-        className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium text-secondary transition-colors duration-150 hover:bg-hover hover:text-foreground"
-      >
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
+    <header className="flex w-full items-center gap-2 py-2">
+      <div className="flex items-center gap-2">
+        <a
+          href="https://waweup.com"
+          aria-label={t.backAria}
+          className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium text-secondary transition-colors duration-150 hover:bg-hover hover:text-foreground"
         >
-          <path
-            d="M9.5 3.5L5 8l4.5 4.5"
-            stroke="currentColor"
-            strokeWidth="1.5"
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M9.5 3.5L5 8l4.5 4.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="hidden sm:inline">{t.backToWaweup}</span>
+        </a>
+
+        <div
+          role="group"
+          aria-label={t.langAria}
+          className="inline-flex h-8 items-center gap-0.5 rounded-lg border border-border p-1"
+        >
+          <button
+            type="button"
+            onClick={() => setLang("tr")}
+            aria-pressed={lang === "tr"}
+            className={lang === "tr" ? SEGMENT_ACTIVE : SEGMENT_INACTIVE}
+          >
+            TR
+          </button>
+          <button
+            type="button"
+            onClick={() => setLang("en")}
+            aria-pressed={lang === "en"}
+            className={lang === "en" ? SEGMENT_ACTIVE : SEGMENT_INACTIVE}
+          >
+            EN
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-1 justify-center">
+        <a
+          href="/"
+          aria-label="waweup"
+          className="inline-flex items-center rounded-md text-lg font-semibold tracking-tight text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <span>wawe</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#FF6903"
+            strokeWidth={2.25}
             strokeLinecap="round"
             strokeLinejoin="round"
-          />
-        </svg>
-        {t.backToWaweup}
-      </a>
-
-      <div
-        role="group"
-        aria-label={t.langAria}
-        className="inline-flex h-8 items-center gap-0.5 rounded-lg border border-border p-1"
-      >
-        <button
-          type="button"
-          onClick={() => setLang("tr")}
-          aria-pressed={lang === "tr"}
-          className={lang === "tr" ? SEGMENT_ACTIVE : SEGMENT_INACTIVE}
-        >
-          TR
-        </button>
-        <button
-          type="button"
-          onClick={() => setLang("en")}
-          aria-pressed={lang === "en"}
-          className={lang === "en" ? SEGMENT_ACTIVE : SEGMENT_INACTIVE}
-        >
-          EN
-        </button>
+            aria-hidden
+            className="ml-[2px] size-[0.85em] -translate-y-[0.06em] -rotate-12"
+          >
+            <path d="m22 2-7 20-4-9-9-4Z" />
+            <path d="M22 2 11 13" />
+          </svg>
+        </a>
       </div>
 
       <button
@@ -330,6 +355,6 @@ export function TopControls() {
           </svg>
         )}
       </button>
-    </div>
+    </header>
   );
 }
